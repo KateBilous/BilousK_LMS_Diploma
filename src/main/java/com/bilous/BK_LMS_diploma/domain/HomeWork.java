@@ -1,34 +1,60 @@
 package com.bilous.BK_LMS_diploma.domain;
 
-import java.time.LocalDate;
-import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
-public class HomeWork  {
+public class HomeWork {
 
     private HomeTask homeTasks;
-    private int result;
+    private int score;
+    private String resolution;
+    private String author;
 
-
-    public HomeWork(HomeTask homeTasks, int result) {
+    public HomeWork(HomeTask homeTasks, int score, String resolution, String author) {
         this.homeTasks = homeTasks;
-        this.result = result;
+        this.score = score;
+        this.resolution = resolution;
+        this.author = author;
     }
 
-    public int getResult() {
-        return result;
+    public HomeTask getHomeTasks() {
+        return homeTasks;
     }
 
-    public void setResult(int result) {
-        this.result = result;
+    public void setHomeTasks(HomeTask homeTasks) {
+        this.homeTasks = homeTasks;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public String getResolution() {
+        return resolution;
+    }
+
+    public void setResolution(String resolution) {
+        this.resolution = resolution;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     @Override
     public String toString() {
         return "HomeWork{" +
                 "homeTasks=" + homeTasks +
-                ", result=" + result +
+                ", score=" + score +
+                ", resolution='" + resolution + '\'' +
+                ", author='" + author + '\'' +
                 '}';
     }
 
@@ -37,12 +63,14 @@ public class HomeWork  {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         HomeWork homeWork = (HomeWork) o;
-        return result == homeWork.result &&
-                homeTasks.equals(homeWork.homeTasks);
+        return score == homeWork.score &&
+                homeTasks.equals(homeWork.homeTasks) &&
+                resolution.equals(homeWork.resolution) &&
+                author.equals(homeWork.author);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(homeTasks, result);
+        return Objects.hash(homeTasks, score, resolution, author);
     }
 }

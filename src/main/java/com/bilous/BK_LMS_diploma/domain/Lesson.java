@@ -1,9 +1,7 @@
 package com.bilous.BK_LMS_diploma.domain;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 public class Lesson {
 
@@ -11,7 +9,7 @@ public class Lesson {
     private String topic;
     private String materials;
 
-    Set<HomeWork> homeWork;
+    List<HomeWork> homeWork;
 
     public Lesson(Group group, String topic, String materials) {
         this.group = group;
@@ -47,8 +45,6 @@ public class Lesson {
     public String toString() {
         return "Lesson{" +
                 "group=" + group +
-                ", topic='" + topic + '\'' +
-                ", materials='" + materials + '\'' +
                 '}';
     }
 

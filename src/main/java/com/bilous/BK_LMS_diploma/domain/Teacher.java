@@ -1,21 +1,21 @@
 package com.bilous.BK_LMS_diploma.domain;
 
 import java.time.LocalDate;
-import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
-public class Teacher  extends User{
+public class Teacher extends User {
 
     private String role;
 
-    private Set<Group> groups;
+    private List<Group> groups;
 
 
     public Teacher(String firstName, String lastName, LocalDate dateOfBirth, String role) {
         super(firstName, lastName, dateOfBirth);
         this.role = role;
-        this.groups = new HashSet<>();
+        this.groups = new LinkedList<Group>();
     }
 
     public String getRole() {
@@ -26,26 +26,22 @@ public class Teacher  extends User{
         this.role = role;
     }
 
-    public void addGroup(Group group){
-        if (this.groups == null){
-            this.groups = new HashSet<>();
+    public void addGroup(Group group) {
+        if (this.groups == null) {
+            this.groups = new LinkedList<Group>();
         }
         groups.add(group);
     }
 
-    public Set<Group> getGroups(){
+    public List<Group> getGroups() {
         return this.groups;
     }
 
     @Override
     public String toString() {
         return "Teacher{" +
-                "role='" + role + '\'' +
-                ", groups=" + groups +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", dateOfBirth=" + dateOfBirth +
-                "} " ;
+                "groups=" + groups +
+                "} " + super.toString();
     }
 
     @Override

@@ -13,11 +13,11 @@ public class Runner {
         Teacher teacher = new Teacher("Tom", "Harris", LocalDate.ofYearDay(1988, 9), "teacher");
         //Post post = new Post(group,);
         Feed feed = new Feed(group);
-        Post post = new Post(feed, "kkkk", LocalDate.now());
+        Post post = new Post(feed, "Sone text", LocalDate.now(), "Olha");
         Lesson lesson = new Lesson(group, "smth", "kdkdkd");
         HomeTask homeTask = new HomeTask(lesson, 87, LocalDate.now(), "jsjsjsj", LocalDate.of(2021,
                 9, 8));
-        HomeWork homeWork = new HomeWork(homeTask, 85);
+        HomeWork homeWork = new HomeWork(homeTask, 85, "redone", "Martha");
 
     }
 }

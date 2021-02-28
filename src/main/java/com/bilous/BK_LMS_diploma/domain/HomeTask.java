@@ -7,7 +7,7 @@ public class HomeTask {
 
 
     private Lesson lesson;
-    private int task;
+    private int retake;
     private LocalDate date;
     private String materials;
     private LocalDate dedLine;
@@ -15,7 +15,7 @@ public class HomeTask {
 
     public HomeTask(Lesson lesson, int task, LocalDate date, String materials, LocalDate dedLine) {
         this.lesson = lesson;
-        this.task = task;
+        this.retake = task;
         this.date = date;
         this.materials = materials;
         this.dedLine = dedLine;
@@ -29,12 +29,12 @@ public class HomeTask {
         this.lesson = lesson;
     }
 
-    public int getTask() {
-        return task;
+    public int getRetake() {
+        return retake;
     }
 
-    public void setTask(int task) {
-        this.task = task;
+    public void setRetake(int retake) {
+        this.retake = retake;
     }
 
     public LocalDate getDate() {
@@ -65,7 +65,7 @@ public class HomeTask {
     public String toString() {
         return "HomeTask{" +
                 "homeWork=" + lesson +
-                ", task=" + task +
+                ", task=" + retake +
                 ", date=" + date +
                 ", materials='" + materials + '\'' +
                 ", dedLine=" + dedLine +
@@ -77,7 +77,7 @@ public class HomeTask {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         HomeTask homeTask = (HomeTask) o;
-        return task == homeTask.task &&
+        return retake == homeTask.retake &&
                 lesson.equals(homeTask.lesson) &&
                 date.equals(homeTask.date) &&
                 materials.equals(homeTask.materials) &&
@@ -86,6 +86,6 @@ public class HomeTask {
 
     @Override
     public int hashCode() {
-        return Objects.hash(lesson, task, date, materials, dedLine);
+        return Objects.hash(lesson, retake, date, materials, dedLine);
     }
 }

@@ -1,9 +1,9 @@
 package com.bilous.BK_LMS_diploma.domain;
 
 import java.time.LocalDate;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Objects;
-import java.util.Set;
-import java.util.SortedSet;
 
 public class Group {
 
@@ -11,9 +11,9 @@ public class Group {
     private String direction;
     private LocalDate startDate;
 
-    private Set<Student> students;
-    private Set<Teacher> teachers;
-    private SortedSet<Lesson> lessons;
+    private List<Student> students;
+    private List<Teacher> teachers;
+    private LinkedList<Lesson> lessons;
     private final Feed feed;
 
 
@@ -47,6 +47,19 @@ public class Group {
 
     public void setStartDate(LocalDate startDate) {
         this.startDate = startDate;
+    }
+
+    @Override
+    public String toString() {
+        return "Group{" +
+                "name='" + name + '\'' +
+                ", direction='" + direction + '\'' +
+                ", startDate=" + startDate +
+                ", students=" + students +
+                ", teachers=" + teachers +
+                ", lessons=" + lessons +
+                ", feed=" + feed +
+                '}';
     }
 
     @Override
