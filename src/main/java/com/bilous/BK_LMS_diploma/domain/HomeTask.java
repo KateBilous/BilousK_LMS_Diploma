@@ -6,6 +6,7 @@ import java.util.Objects;
 public class HomeTask {
 
 
+    private Integer id;
     private Lesson lesson;
     private int retake;
     private LocalDate date;
@@ -20,6 +21,16 @@ public class HomeTask {
         this.materials = materials;
         this.dedLine = dedLine;
     }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+
 
     public Lesson getLesson() {
         return lesson;

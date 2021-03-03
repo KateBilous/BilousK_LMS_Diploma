@@ -4,6 +4,8 @@ import java.util.Objects;
 
 public class HomeWork {
 
+
+    private Integer id;
     private HomeTask homeTasks;
     private int score;
     private String resolution;
@@ -14,6 +16,14 @@ public class HomeWork {
         this.score = score;
         this.resolution = resolution;
         this.author = author;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public HomeTask getHomeTasks() {

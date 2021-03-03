@@ -4,9 +4,12 @@ import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
+import java.util.TreeSet;
 
 public class Group {
 
+
+    private Integer id;
     private String name;
     private String direction;
     private LocalDate startDate;
@@ -17,12 +20,22 @@ public class Group {
     private final Feed feed;
 
 
+
     public Group(String name, String direction, LocalDate startDate) {
         this.name = name;
         this.direction = direction;
         this.startDate = startDate;
         this.feed = new Feed(this);
+        this.lessons = new LinkedList<Lesson>();
 
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -49,16 +62,41 @@ public class Group {
         this.startDate = startDate;
     }
 
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
+
+    public List<Teacher> getTeachers() {
+        return teachers;
+    }
+
+    public void setTeachers(List<Teacher> teachers) {
+        this.teachers = teachers;
+    }
+
+    public LinkedList<Lesson> getLessons() {
+        return lessons;
+    }
+
+    public void setLessons(LinkedList<Lesson> lessons) {
+        this.lessons = lessons;
+    }
+
+    public Feed getFeed() {
+        return feed;
+    }
+
     @Override
     public String toString() {
         return "Group{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", direction='" + direction + '\'' +
                 ", startDate=" + startDate +
-                ", students=" + students +
-                ", teachers=" + teachers +
-                ", lessons=" + lessons +
-                ", feed=" + feed +
                 '}';
     }
 
@@ -67,13 +105,15 @@ public class Group {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Group group = (Group) o;
-        return name.equals(group.name) &&
-                direction.equals(group.direction) &&
-                startDate.equals(group.startDate);
+        return Objects.equals(id, group.id) &&
+                Objects.equals(name, group.name) &&
+                Objects.equals(direction, group.direction) &&
+                Objects.equals(startDate, group.startDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, direction, startDate);
+        return Objects.hash(id, name, direction, startDate);
     }
+
 }

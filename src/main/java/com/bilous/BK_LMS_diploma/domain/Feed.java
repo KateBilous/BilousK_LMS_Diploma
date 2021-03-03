@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Feed {
 
+    private Integer id;
     private final Group group;
     private List<Post> posts;
 
@@ -12,6 +13,14 @@ public class Feed {
     public Feed(Group group) {
         this.group = group;
         posts = new ArrayList<>();
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Group getGroup() {

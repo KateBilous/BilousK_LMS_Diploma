@@ -3,8 +3,9 @@ package com.bilous.BK_LMS_diploma.domain;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public abstract class User {
+public  class User {
 
+    private Integer id;
     protected String firstName;
     protected String lastName;
     protected LocalDate dateOfBirth;
@@ -17,6 +18,14 @@ public abstract class User {
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
 
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getFirstName() {

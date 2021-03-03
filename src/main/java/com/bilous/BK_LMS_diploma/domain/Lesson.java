@@ -5,6 +5,8 @@ import java.util.Objects;
 
 public class Lesson {
 
+
+    private Integer id;
     private Group group;
     private String topic;
     private String materials;
@@ -15,6 +17,14 @@ public class Lesson {
         this.group = group;
         this.topic = topic;
         this.materials = materials;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Group getGroup() {

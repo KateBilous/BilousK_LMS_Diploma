@@ -5,6 +5,7 @@ import java.util.Objects;
 
 public class Post {
 
+    private Integer id;
     private Feed feeds;
     private String text;
     private LocalDate datePosted;
@@ -15,6 +16,14 @@ public class Post {
         this.text = text;
         this.datePosted = datePosted;
         this.author = author;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public Feed getFeeds() {
