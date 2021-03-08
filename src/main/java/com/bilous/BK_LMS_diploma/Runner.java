@@ -7,18 +7,17 @@ import com.bilous.BK_LMS_diploma.domain.model.UserDao;
 import com.bilous.BK_LMS_diploma.domain.model.inMemoryImpl.InMemoryGroupDaoImpl;
 import com.bilous.BK_LMS_diploma.domain.model.inMemoryImpl.InMemoryTeacherDaoImpl;
 import com.bilous.BK_LMS_diploma.domain.model.inMemoryImpl.InMemoryUserDaoImpl;
-import com.bilous.BK_LMS_diploma.persistence.Persistence;
+import com.bilous.BK_LMS_diploma.persistence.Storage;
 import com.bilous.BK_LMS_diploma.service.GroupService;
 import com.bilous.BK_LMS_diploma.service.GroupServiceImpl;
 
 import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.List;
 
 public class Runner {
     public static void main(String[] args) {
 
-        Persistence persistence = Persistence.getInstance();
+        Storage persistence = Storage.getInstance();
 
         GroupDao groupDao = new InMemoryGroupDaoImpl();
         UserDao userDao = new InMemoryUserDaoImpl();

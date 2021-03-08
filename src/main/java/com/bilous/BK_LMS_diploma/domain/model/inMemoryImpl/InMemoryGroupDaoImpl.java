@@ -2,7 +2,7 @@ package com.bilous.BK_LMS_diploma.domain.model.inMemoryImpl;
 
 import com.bilous.BK_LMS_diploma.domain.Group;
 import com.bilous.BK_LMS_diploma.domain.model.GroupDao;
-import com.bilous.BK_LMS_diploma.persistence.Persistence;
+import com.bilous.BK_LMS_diploma.persistence.Storage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,15 +12,15 @@ public class InMemoryGroupDaoImpl implements GroupDao {
 
     @Override
     public List<Group> getAll() {
-        return new ArrayList<>(Persistence.getInstance().getGroup().values());
+        return new ArrayList<>(Storage.getInstance().getGroup().values());
     }
 
     @Override
     public Integer saveGroup(Group group) {
         Group savedGroup = buildGroupFromTemplate(group);
-        int newId = Persistence.getInstance().getNewGroupId();
+        int newId = Storage.getInstance().getNewGroupId();
         savedGroup.setId(newId);
-        Persistence.getInstance().getGroup().put(newId, savedGroup);
+        Storage.getInstance().getGroup().put(newId, savedGroup);
         return savedGroup;
     }
 
@@ -35,14 +35,14 @@ public class InMemoryGroupDaoImpl implements GroupDao {
 
     @Override
     public Group getGroupById(int id) {
-        return Persistence.getInstance().getGroup().get(id);
+        return Storage.getInstance().getGroup().get(id);
 
     }
 
     @Override
     public boolean updateGroup(Group group) {
         int id = group.getId();
-        Map<Integer, Group> groups = Persistence.getInstance().getGroup();
+        Map<Integer, Group> groups = Storage.getInstance().getGroup();
         if (groups.containsKey(id)) {
             groups.put(id, group);
             return true;
@@ -54,7 +54,7 @@ public class InMemoryGroupDaoImpl implements GroupDao {
     @Override
     public boolean updateGroupById(Group group) {
         int id = group.getId();
-        Map<Integer, Group> groups = Persistence.getInstance().getGroup();
+        Map<Integer, Group> groups = Storage.getInstance().getGroup();
         if (groups.containsKey(id)) {
             groups.put(id, group);
             return true;
@@ -65,7 +65,7 @@ public class InMemoryGroupDaoImpl implements GroupDao {
 
     @Override
     public boolean deleteGroupById(int id) {
-        Map<Integer, Group> groups = Persistence.getInstance().getGroup();
+        Map<Integer, Group> groups = Storage.getInstance().getGroup();
         if (groups.containsKey(id)) {
             groups.remove(id);
             return true;

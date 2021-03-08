@@ -2,7 +2,7 @@ package com.bilous.BK_LMS_diploma.domain.model.inMemoryImpl;
 
 import com.bilous.BK_LMS_diploma.domain.Lesson;
 import com.bilous.BK_LMS_diploma.domain.model.LessonDao;
-import com.bilous.BK_LMS_diploma.persistence.Persistence;
+import com.bilous.BK_LMS_diploma.persistence.Storage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,15 +13,15 @@ public class InMemoryLessonDaoImpl implements LessonDao {
 
     @Override
     public List<Lesson> getAll() {
-        return new ArrayList<>(Persistence.getInstance().getLesson().values());
+        return new ArrayList<>(Storage.getInstance().getLesson().values());
     }
 
     @Override
     public Lesson saveLesson(Lesson lesson) {
         Lesson savedLesson = buildLessonFromTemplate(lesson);
-        int newId = Persistence.getInstance().getNewLessonId();
+        int newId = Storage.getInstance().getNewLessonId();
         savedLesson.setId(newId);
-        Persistence.getInstance().getLesson().put(newId, savedLesson);
+        Storage.getInstance().getLesson().put(newId, savedLesson);
         return savedLesson;
     }
 
@@ -35,14 +35,14 @@ public class InMemoryLessonDaoImpl implements LessonDao {
 
     @Override
     public Lesson getLessonById(int id) {
-        return Persistence.getInstance().getLesson().get(id);
+        return Storage.getInstance().getLesson().get(id);
 
     }
 
     @Override
     public boolean updateLesson(Lesson lesson) {
         int id = lesson.getId();
-        Map<Integer, Lesson> lessons = Persistence.getInstance().getLesson();
+        Map<Integer, Lesson> lessons = Storage.getInstance().getLesson();
         if (lessons.containsKey(id)) {
             lessons.put(id, lesson);
             return true;
@@ -54,7 +54,7 @@ public class InMemoryLessonDaoImpl implements LessonDao {
     @Override
     public boolean updateLessonById(Lesson lesson) {
         int id = lesson.getId();
-        Map<Integer, Lesson> lessons = Persistence.getInstance().getLesson();
+        Map<Integer, Lesson> lessons = Storage.getInstance().getLesson();
         if (lessons.containsKey(id)) {
             lessons.put(id, lesson);
             return true;
@@ -65,7 +65,7 @@ public class InMemoryLessonDaoImpl implements LessonDao {
 
     @Override
     public boolean deleteLessonById(int id) {
-        Map<Integer, Lesson> lessons = Persistence.getInstance().getLesson();
+        Map<Integer, Lesson> lessons = Storage.getInstance().getLesson();
         if (lessons.containsKey(id)) {
             lessons.remove(id);
             return true;

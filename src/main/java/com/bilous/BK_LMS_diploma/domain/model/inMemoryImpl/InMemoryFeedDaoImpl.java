@@ -2,7 +2,7 @@ package com.bilous.BK_LMS_diploma.domain.model.inMemoryImpl;
 
 import com.bilous.BK_LMS_diploma.domain.Feed;
 import com.bilous.BK_LMS_diploma.domain.model.FeedDao;
-import com.bilous.BK_LMS_diploma.persistence.Persistence;
+import com.bilous.BK_LMS_diploma.persistence.Storage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,15 +13,15 @@ public class InMemoryFeedDaoImpl implements FeedDao {
 
     @Override
     public List<Feed> getAll() {
-        return new ArrayList<>(Persistence.getInstance().getFeed().values());
+        return new ArrayList<>(Storage.getInstance().getFeed().values());
     }
 
     @Override
     public Feed saveFeed(Feed feed) {
         Feed savedFeed = buildFeedFromTemplate(feed);
-        int newId = Persistence.getInstance().getNewFeedId();
+        int newId = Storage.getInstance().getNewFeedId();
         savedFeed.setId(newId);
-        Persistence.getInstance().getFeed().put(newId, savedFeed);
+        Storage.getInstance().getFeed().put(newId, savedFeed);
         return savedFeed;
     }
 
@@ -33,14 +33,14 @@ public class InMemoryFeedDaoImpl implements FeedDao {
 
     @Override
     public Feed getFeedById(int id) {
-        return Persistence.getInstance().getFeed().get(id);
+        return Storage.getInstance().getFeed().get(id);
 
     }
 
     @Override
     public boolean updateFeed(Feed feed) {
         int id = feed.getId();
-        Map<Integer, Feed> feeds = Persistence.getInstance().getFeed();
+        Map<Integer, Feed> feeds = Storage.getInstance().getFeed();
         if (feeds.containsKey(id)) {
             feeds.put(id, feed);
             return true;
@@ -52,7 +52,7 @@ public class InMemoryFeedDaoImpl implements FeedDao {
     @Override
     public boolean updateFeedById(Feed feed) {
         int id = feed.getId();
-        Map<Integer, Feed> feeds = Persistence.getInstance().getFeed();
+        Map<Integer, Feed> feeds = Storage.getInstance().getFeed();
         if (feeds.containsKey(id)) {
             feeds.put(id, feed);
             return true;
@@ -63,7 +63,7 @@ public class InMemoryFeedDaoImpl implements FeedDao {
 
     @Override
     public boolean deleteFeedById(int id) {
-        Map<Integer, Feed> feeds = Persistence.getInstance().getFeed();
+        Map<Integer, Feed> feeds = Storage.getInstance().getFeed();
         if (feeds.containsKey(id)) {
             feeds.remove(id);
             return true;
