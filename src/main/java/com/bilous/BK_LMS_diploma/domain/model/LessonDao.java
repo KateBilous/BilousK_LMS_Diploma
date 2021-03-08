@@ -13,9 +13,8 @@ public interface LessonDao {
 
     Lesson getLessonById(int id);
 
-    boolean updateLesson(Lesson lesson);
 
-    boolean updateLessonById(Lesson lesson);
+    boolean updateLessonById(Lesson lesson, int id);
 
     boolean deleteLessonById(int id);
 }

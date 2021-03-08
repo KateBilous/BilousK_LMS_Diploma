@@ -7,64 +7,64 @@ import java.util.Map;
 
 public class Storage {
 
-    private static Map<Integer, Group> groupMap = new HashMap<>();
+    private static Map<Integer, Group> groupsMap = new HashMap<>();
 
-    private static Map<Integer, User> userMap = new HashMap<>();
+    private static Map<Integer, User> usersMap = new HashMap<>();
 
-    private static Map<Integer, Teacher> teacherMap = new HashMap<>();
+    private static Map<Integer, Teacher> teachersMap = new HashMap<>();
 
-    private static Map<Integer, Student> studentMap = new HashMap<>();
+    private static Map<Integer, Student> studentsMap = new HashMap<>();
 
-    private static Map<Integer, HomeTask> homeTaskMap = new HashMap<>();
+    private static Map<Integer, HomeTask> homeTasksMap = new HashMap<>();
 
-    private static Map<Integer, Post> postMap = new HashMap<>();
+    private static Map<Integer, Post> postsMap = new HashMap<>();
 
-    private static Map<Integer, Lesson> lessonMap = new HashMap<>();
+    private static Map<Integer, Lesson> lessonsMap = new HashMap<>();
 
-    private static Map<Integer, Feed> feedMap = new HashMap<>();
+    private static Map<Integer, Feed> feedsMap = new HashMap<>();
 
-    private static Map<Integer, HomeWork> homeWorkMap = new HashMap<>();
+    private static Map<Integer, HomeWork> homeWorksMap = new HashMap<>();
 
     public static Map<Integer, Group> getGroups() {
-        return groupMap;
+        return groupsMap;
     }
 
-    public static Map<Integer, User> getUser() {
-        return userMap;
+    public static Map<Integer, User> getUsers() {
+        return usersMap;
     }
 
-    public static Map<Integer, Teacher> getTeacher() {
-        return teacherMap;
+    public static Map<Integer, Teacher> getTeachers() {
+        return teachersMap;
     }
 
-    public static Map<Integer, Student> getStudent() {
-        return studentMap;
+    public static Map<Integer, Student> getStudents() {
+        return studentsMap;
     }
 
-    public static Map<Integer, Post> getPost() {
-        return postMap;
+    public static Map<Integer, Post> getPosts() {
+        return postsMap;
     }
 
-    public static Map<Integer, Lesson> getLesson() {
-        return lessonMap;
+    public static Map<Integer, Lesson> getLessons() {
+        return lessonsMap;
     }
 
-    public static Map<Integer, Feed> getFeed() {
-        return feedMap;
+    public static Map<Integer, Feed> getFeeds() {
+        return feedsMap;
     }
 
-    public static Map<Integer, HomeTask> getHomeTask() {
-        return homeTaskMap;
+    public static Map<Integer, HomeTask> getHomeTasks() {
+        return homeTasksMap;
     }
 
-    public static Map<Integer, HomeWork> getHomeWork() {
-        return homeWorkMap;
+    public static Map<Integer, HomeWork> getHomeWorks() {
+        return homeWorksMap;
     }
 
 
     public static int getNewGroupId() {
         int max = 0;
-        for (Integer currentID : groupMap.keySet()) {
+        for (Integer currentID : groupsMap.keySet()) {
             if (currentID > max) {
                 max = currentID;
             }
@@ -74,7 +74,7 @@ public class Storage {
 
     public static int getNewUserId() {
         int max = 0;
-        for (Integer currentID : userMap.keySet()) {
+        for (Integer currentID : usersMap.keySet()) {
             if (currentID > max) {
                 max = currentID;
             }
@@ -84,7 +84,7 @@ public class Storage {
 
     public static int getNewTeacherId() {
         int max = 0;
-        for (Integer currentID : teacherMap.keySet()) {
+        for (Integer currentID : teachersMap.keySet()) {
             if (currentID > max) {
                 max = currentID;
             }
@@ -94,7 +94,7 @@ public class Storage {
 
     public static int getNewStudentId() {
         int max = 0;
-        for (Integer currentID : studentMap.keySet()) {
+        for (Integer currentID : studentsMap.keySet()) {
             if (currentID > max) {
                 max = currentID;
             }
@@ -104,7 +104,7 @@ public class Storage {
 
     public static int getNewPostId() {
         int max = 0;
-        for (Integer currentID : postMap.keySet()) {
+        for (Integer currentID : postsMap.keySet()) {
             if (currentID > max) {
                 max = currentID;
             }
@@ -114,7 +114,7 @@ public class Storage {
 
     public static int getNewLessonId() {
         int max = 0;
-        for (Integer currentID : lessonMap.keySet()) {
+        for (Integer currentID : lessonsMap.keySet()) {
             if (currentID > max) {
                 max = currentID;
             }
@@ -124,7 +124,7 @@ public class Storage {
 
     public static int getNewFeedId() {
         int max = 0;
-        for (Integer currentID : feedMap.keySet()) {
+        for (Integer currentID : feedsMap.keySet()) {
             if (currentID > max) {
                 max = currentID;
             }
@@ -134,7 +134,7 @@ public class Storage {
 
     public static int getNewHomeTaskId() {
         int max = 0;
-        for (Integer currentID : homeTaskMap.keySet()) {
+        for (Integer currentID : homeTasksMap.keySet()) {
             if (currentID > max) {
                 max = currentID;
             }
@@ -144,7 +144,7 @@ public class Storage {
 
     public static int getNewHomeWorkId() {
         int max = 0;
-        for (Integer currentID : homeWorkMap.keySet()) {
+        for (Integer currentID : homeWorksMap.keySet()) {
             if (currentID > max) {
                 max = currentID;
             }

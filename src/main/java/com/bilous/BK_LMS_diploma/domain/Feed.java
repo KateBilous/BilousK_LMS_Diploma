@@ -22,7 +22,6 @@ public class Feed {
     public void setId(Integer id) {
         this.id = id;
     }
-
     public Group getGroup() {
         return group;
     }

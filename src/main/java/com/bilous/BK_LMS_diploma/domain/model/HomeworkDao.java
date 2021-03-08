@@ -13,9 +13,7 @@ public interface HomeworkDao {
 
     HomeWork getHomeWorkById(int id);
 
-    boolean updateHomeWork(HomeWork homeWork);
-
-    boolean updateHomeWorkById(HomeWork homeWork);
+    boolean updateHomeWorkById(HomeWork homeWork, int id);
 
     boolean deleteHomeWorkById(int id);
 }

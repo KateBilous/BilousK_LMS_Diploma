@@ -13,9 +13,7 @@ public interface PostDao {
 
     Post getPostById(int id);
 
-    boolean updatePost(Post post);
-
-    boolean updatePostById(Post post);
+    boolean updatePostById(Post post, int id);
 
     boolean deletePostById(int id);
 

@@ -13,50 +13,28 @@ public class InMemoryLessonDaoImpl implements LessonDao {
 
     @Override
     public List<Lesson> getAll() {
-        return new ArrayList<>(Storage.getLesson().values());
+        return new ArrayList<>(Storage.getLessons().values());
     }
 
     @Override
     public Lesson saveLesson(Lesson lesson) {
-        Lesson savedLesson = buildLessonFromTemplate(lesson);
         int newId = Storage.getNewLessonId();
-        savedLesson.setId(newId);
-        Storage.getLesson().put(newId, savedLesson);
-        return savedLesson;
+        lesson.setId(newId);
+        return  Storage.getLessons().put(lesson.getId(), lesson);
     }
 
-    private Lesson buildLessonFromTemplate(Lesson lesson) {
-        Lesson newLesson = new Lesson(lesson.getGroup(), lesson.getTopic(), lesson.getMaterials());
-        newLesson.setGroup(lesson.getGroup());
-        newLesson.setTopic(lesson.getTopic());
-        newLesson.setMaterials(lesson.getMaterials());
-        return newLesson;
-    }
 
     @Override
     public Lesson getLessonById(int id) {
-        return Storage.getLesson().get(id);
+        return Storage.getLessons().get(id);
 
     }
 
     @Override
-    public boolean updateLesson(Lesson lesson) {
-        int id = lesson.getId();
-        Map<Integer, Lesson> lessons = Storage.getLesson();
-        if (lessons.containsKey(id)) {
-            lessons.put(id, lesson);
-            return true;
-        }
-        return false;
-    }
-
-
-    @Override
-    public boolean updateLessonById(Lesson lesson) {
-        int id = lesson.getId();
-        Map<Integer, Lesson> lessons = Storage.getLesson();
-        if (lessons.containsKey(id)) {
-            lessons.put(id, lesson);
+    public boolean updateLessonById(Lesson lesson, int id) {
+        Map<Integer, Lesson> lessons = Storage.getLessons();
+        if (lessons.containsKey(lesson.getId())) {
+            lessons.put(lesson.getId(), lesson);
             return true;
         }
         return false;
@@ -65,7 +43,7 @@ public class InMemoryLessonDaoImpl implements LessonDao {
 
     @Override
     public boolean deleteLessonById(int id) {
-        Map<Integer, Lesson> lessons = Storage.getLesson();
+        Map<Integer, Lesson> lessons = Storage.getLessons();
         if (lessons.containsKey(id)) {
             lessons.remove(id);
             return true;

@@ -11,9 +11,7 @@ public interface HomeTaskDao {
 
     HomeTask getHomeTaskById(int id);
 
-    boolean updateHomeTask(HomeTask homeTask);
-
-    boolean updateHomeTaskById(HomeTask homeTask);
+    boolean updateHomeTaskById(HomeTask homeTask, int id);
 
     boolean deleteHomeTaskById(int id);
 }

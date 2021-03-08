@@ -1,9 +1,11 @@
 package com.bilous.BK_LMS_diploma;
 
 import com.bilous.BK_LMS_diploma.domain.*;
+import com.bilous.BK_LMS_diploma.domain.model.FeedDao;
 import com.bilous.BK_LMS_diploma.domain.model.GroupDao;
 import com.bilous.BK_LMS_diploma.domain.model.TeacherDao;
 import com.bilous.BK_LMS_diploma.domain.model.UserDao;
+import com.bilous.BK_LMS_diploma.domain.model.inMemoryImpl.InMemoryFeedDaoImpl;
 import com.bilous.BK_LMS_diploma.domain.model.inMemoryImpl.InMemoryGroupDaoImpl;
 import com.bilous.BK_LMS_diploma.domain.model.inMemoryImpl.InMemoryTeacherDaoImpl;
 import com.bilous.BK_LMS_diploma.domain.model.inMemoryImpl.InMemoryUserDaoImpl;
@@ -17,6 +19,7 @@ public class Runner {
         GroupDao groupDao = new InMemoryGroupDaoImpl();
         UserDao userDao = new InMemoryUserDaoImpl();
         TeacherDao teacherDao = new InMemoryTeacherDaoImpl();
+        FeedDao feedDao = new InMemoryFeedDaoImpl();
 
 
         Group group1 = new Group("Java", "Back-end", LocalDate.now());
@@ -40,8 +43,8 @@ public class Runner {
         user1.setLastName("Bean");
         teacher.setFirstName("Bob");
 
-        groupDao.updateGroupById(group2);
-        userDao.updateUserById(user1);
+        groupDao.updateGroupById(group2, 1);
+        userDao.updateUserById(user1, 1);
 
         groupDao.deleteGroupById(1);
 
@@ -50,7 +53,7 @@ public class Runner {
 
         Group fromDb = groupDao.getGroupById(3);
 
-        groupDao.updateGroup(group2);
+        groupDao.updateGroupById(group1,1);
 
 
         Student student = new Student("Kate", "Bilous", LocalDate.ofYearDay(1991, 5),
@@ -61,6 +64,10 @@ public class Runner {
         HomeTask homeTask = new HomeTask(lesson, 87, LocalDate.now(), "jsjsjsj", LocalDate.of(2021,
                 9, 8));
         HomeWork homeWork = new HomeWork(homeTask, 85, "redone", "Martha");
+
+        groupDao.saveGroup(group1);
+        feedDao.saveFeed(feed);
+
 
 
 

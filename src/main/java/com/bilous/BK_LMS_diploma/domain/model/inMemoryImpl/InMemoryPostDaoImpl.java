@@ -12,51 +12,29 @@ public class InMemoryPostDaoImpl implements PostDao {
 
     @Override
     public List<Post> getAll() {
-        return new ArrayList<>(Storage.getPost().values());
+        return new ArrayList<>(Storage.getPosts().values());
     }
 
     @Override
     public Post savePost(Post post) {
-        Post savedPost = buildPostFromTemplate(post);
         int newId = Storage.getNewPostId();
-        savedPost.setId(newId);
-        Storage.getPost().put(newId, savedPost);
-        return savedPost;
+        post.setId(newId);
+        return Storage.getPosts().put(post.getId(), post);
     }
 
-    private Post buildPostFromTemplate(Post post) {
-        Post newPost = new Post(post.getFeeds(), post.getAuthor(), post.getDatePosted(), post.getText());
-        newPost.setFeeds(post.getFeeds());
-        newPost.setAuthor(post.getAuthor());
-        newPost.setDatePosted(post.getDatePosted());
-        newPost.setText(post.getText());
-        return newPost;
-    }
 
     @Override
     public Post getPostById(int id) {
-        return Storage.getPost().get(id);
+        return Storage.getPosts().get(id);
 
-    }
-
-    @Override
-    public boolean updatePost(Post post) {
-        int id = post.getId();
-        Map<Integer, Post> posts = Storage.getPost();
-        if (posts.containsKey(id)) {
-            posts.put(id, post);
-            return true;
-        }
-        return false;
     }
 
 
     @Override
-    public boolean updatePostById(Post post) {
-        int id = post.getId();
-        Map<Integer, Post> posts = Storage.getPost();
-        if (posts.containsKey(id)) {
-            posts.put(id, post);
+    public boolean updatePostById(Post post, int id) {
+        Map<Integer, Post> posts = Storage.getPosts();
+        if (posts.containsKey(post.getId())) {
+            posts.put(post.getId(), post);
             return true;
         }
         return false;
@@ -65,7 +43,7 @@ public class InMemoryPostDaoImpl implements PostDao {
 
     @Override
     public boolean deletePostById(int id) {
-        Map<Integer, Post> posts = Storage.getPost();
+        Map<Integer, Post> posts = Storage.getPosts();
         if (posts.containsKey(id)) {
             posts.remove(id);
             return true;
