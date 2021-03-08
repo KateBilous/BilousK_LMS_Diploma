@@ -2,7 +2,7 @@ package com.bilous.BK_LMS_diploma.domain.model.inMemoryImpl;
 
 import com.bilous.BK_LMS_diploma.domain.Teacher;
 import com.bilous.BK_LMS_diploma.domain.model.TeacherDao;
-import com.bilous.BK_LMS_diploma.persistence.Storage;
+import com.bilous.BK_LMS_diploma.persistence.Persistence;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,15 +12,15 @@ public  class InMemoryTeacherDaoImpl implements TeacherDao  {
 
     @Override
     public List<Teacher> getAll() {
-        return new ArrayList<>(Storage.getTeacher().values());
+        return new ArrayList<>(Persistence.getInstance().getTeacher().values());
     }
 
     @Override
     public Teacher saveTeacher(Teacher teacher) {
         Teacher savedTeacher = buildTeacherFromTemplate(teacher);
-        int newId = Storage.getNewTeacherId();
+        int newId = Persistence.getInstance().getNewTeacherId();
         savedTeacher.setId(newId);
-        Storage.getTeacher().put(newId, savedTeacher);
+        Persistence.getInstance().getTeacher().put(newId, savedTeacher);
         return savedTeacher;
     }
 
@@ -36,14 +36,14 @@ public  class InMemoryTeacherDaoImpl implements TeacherDao  {
 
     @Override
     public Teacher getTeacherById(int id) {
-        return Storage.getTeacher().get(id);
+        return Persistence.getInstance().getTeacher().get(id);
 
     }
 
     @Override
     public boolean updateTeacher(Teacher teacher) {
         int id = teacher.getId();
-        Map<Integer, Teacher> teachers = Storage.getTeacher();
+        Map<Integer, Teacher> teachers = Persistence.getInstance().getTeacher();
         if (teachers.containsKey(id)) {
             teachers.put(id, teacher);
             return true;
@@ -55,7 +55,7 @@ public  class InMemoryTeacherDaoImpl implements TeacherDao  {
     @Override
     public boolean updateTeacherById(Teacher teacher) {
         int id = teacher.getId();
-        Map<Integer, Teacher> teachers = Storage.getTeacher();
+        Map<Integer, Teacher> teachers = Persistence.getInstance().getTeacher();
         if (teachers.containsKey(id)) {
             teachers.put(id, teacher);
             return true;
@@ -66,7 +66,7 @@ public  class InMemoryTeacherDaoImpl implements TeacherDao  {
 
     @Override
     public boolean deleteTeacherById(int id) {
-        Map<Integer, Teacher> teachers = Storage.getTeacher();
+        Map<Integer, Teacher> teachers = Persistence.getInstance().getTeacher();
         if (teachers.containsKey(id)) {
             teachers.remove(id);
             return true;

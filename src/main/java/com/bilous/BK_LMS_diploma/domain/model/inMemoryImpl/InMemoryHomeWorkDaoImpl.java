@@ -2,7 +2,7 @@ package com.bilous.BK_LMS_diploma.domain.model.inMemoryImpl;
 
 import com.bilous.BK_LMS_diploma.domain.HomeWork;
 import com.bilous.BK_LMS_diploma.domain.model.HomeworkDao;
-import com.bilous.BK_LMS_diploma.persistence.Storage;
+import com.bilous.BK_LMS_diploma.persistence.Persistence;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,15 +13,15 @@ public class InMemoryHomeWorkDaoImpl implements HomeworkDao {
 
     @Override
     public List<HomeWork> getAll() {
-        return new ArrayList<>(Storage.getHomeWork().values());
+        return new ArrayList<>(Persistence.getInstance().getHomeWork().values());
     }
 
     @Override
     public HomeWork saveHomeWork(HomeWork homeWork) {
         HomeWork savedHomeWork = buildHomeWorkFromTemplate(homeWork);
-        int newId = Storage.getNewHomeWorkId();
+        int newId = Persistence.getInstance().getNewHomeWorkId();
         savedHomeWork.setId(newId);
-        Storage.getHomeWork().put(newId, savedHomeWork);
+        Persistence.getInstance().getHomeWork().put(newId, savedHomeWork);
         return savedHomeWork;
     }
 
@@ -37,14 +37,14 @@ public class InMemoryHomeWorkDaoImpl implements HomeworkDao {
 
     @Override
     public HomeWork getHomeWorkById(int id) {
-        return Storage.getHomeWork().get(id);
+        return Persistence.getInstance().getHomeWork().get(id);
 
     }
 
     @Override
     public boolean updateHomeWork(HomeWork homeWork) {
         int id = homeWork.getId();
-        Map<Integer, HomeWork> homeworks = Storage.getHomeWork();
+        Map<Integer, HomeWork> homeworks = Persistence.getInstance().getHomeWork();
         if (homeworks.containsKey(id)) {
             homeworks.put(id, homeWork);
             return true;
@@ -56,7 +56,7 @@ public class InMemoryHomeWorkDaoImpl implements HomeworkDao {
     @Override
     public boolean updateHomeWorkById(HomeWork homeWork) {
         int id = homeWork.getId();
-        Map<Integer, HomeWork> homeworks = Storage.getHomeWork();
+        Map<Integer, HomeWork> homeworks = Persistence.getInstance().getHomeWork();
         if (homeworks.containsKey(id)) {
             homeworks.put(id, homeWork);
             return true;
@@ -67,7 +67,7 @@ public class InMemoryHomeWorkDaoImpl implements HomeworkDao {
 
     @Override
     public boolean deleteHomeWorkById(int id) {
-        Map<Integer, HomeWork> homeworks = Storage.getHomeWork();
+        Map<Integer, HomeWork> homeworks = Persistence.getInstance().getHomeWork();
         if (homeworks.containsKey(id)) {
             homeworks.remove(id);
             return true;

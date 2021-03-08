@@ -2,67 +2,84 @@ package com.bilous.BK_LMS_diploma.persistence;
 
 import com.bilous.BK_LMS_diploma.domain.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public class Storage {
+public class Persistence {
 
-    private static Map<Integer, Group> groupMap = new HashMap<>();
+    private final Map<Integer, Group> groupMap;
+    private final Map<Integer,User> userMap;
+    private final Map<Integer, Teacher> teacherMap;
+    private final Map<Integer, Student> studentMap;
+    private final Map<Integer, HomeTask> homeTaskMap;
+    private final  Map<Integer, Post> postMap;
+    private final Map<Integer, Lesson> lessonMap;
+    private final Map<Integer, Feed> feedMap;
+    private final Map<Integer, HomeWork> homeWorkMap;
 
-    private static Map<Integer, User> userMap = new HashMap<>();
+    private Persistence(){
+        this.groupMap = new HashMap<Integer, Group>() {};
+        this.userMap = new HashMap<Integer, User>(){};
+        this.teacherMap = new HashMap<Integer, Teacher>(){};
+        this.studentMap = new HashMap<Integer, Student>(){};
+        this.homeTaskMap = new HashMap<Integer, HomeTask>(){};
+        this.postMap = new HashMap<Integer, Post>(){};
+        this.lessonMap = new HashMap<Integer, Lesson>(){};
+        this.feedMap = new HashMap<Integer, Feed>(){};
+        this.homeWorkMap = new HashMap<Integer, HomeWork>(){};
 
-    private static Map<Integer, Teacher> teacherMap = new HashMap<>();
+    }
 
-    private static Map<Integer, Student> studentMap = new HashMap<>();
+    public static Persistence getInstance(){
+        return PersistenceHolder.instance;
+    }
 
-    private static Map<Integer, HomeTask> homeTaskMap = new HashMap<>();
+    public static class PersistenceHolder{
+        private static final Persistence instance = new Persistence();
 
-    private static Map<Integer, Post> postMap = new HashMap<>();
+    }
 
-    private static Map<Integer, Lesson> lessonMap = new HashMap<>();
 
-    private static Map<Integer, Feed> feedMap = new HashMap<>();
-
-    private static Map<Integer, HomeWork> homeWorkMap = new HashMap<>();
-
-    public static Map<Integer, Group> getGroups() {
+    public  Map < Integer,Group> getGroup() {
         return groupMap;
     }
 
-    public static Map<Integer, User> getUser() {
+    public  Map<Integer, User> getUser() {
         return userMap;
     }
 
-    public static Map<Integer, Teacher> getTeacher() {
+    public  Map<Integer, Teacher> getTeacher() {
         return teacherMap;
     }
 
-    public static Map<Integer, Student> getStudent() {
+    public  Map<Integer, Student> getStudent() {
         return studentMap;
     }
 
-    public static Map<Integer, Post> getPost() {
+    public  Map<Integer, Post> getPost() {
         return postMap;
     }
 
-    public static Map<Integer, Lesson> getLesson() {
+    public  Map<Integer, Lesson> getLesson() {
         return lessonMap;
     }
 
-    public static Map<Integer, Feed> getFeed() {
+    public  Map<Integer, Feed> getFeed() {
         return feedMap;
     }
 
-    public static Map<Integer, HomeTask> getHomeTask() {
+    public  Map<Integer, HomeTask> getHomeTask() {
         return homeTaskMap;
     }
 
-    public static Map<Integer, HomeWork> getHomeWork() {
+    public  Map<Integer, HomeWork> getHomeWork() {
         return homeWorkMap;
     }
 
 
-    public static int getNewGroupId() {
+    public int getNewGroupId() {
         int max = 0;
         for (Integer currentID : groupMap.keySet()) {
             if (currentID > max) {
@@ -72,7 +89,7 @@ public class Storage {
         return ++max;
     }
 
-    public static int getNewUserId() {
+    public  int getNewUserId() {
         int max = 0;
         for (Integer currentID : userMap.keySet()) {
             if (currentID > max) {
@@ -82,7 +99,7 @@ public class Storage {
         return ++max;
     }
 
-    public static int getNewTeacherId() {
+    public  int getNewTeacherId() {
         int max = 0;
         for (Integer currentID : teacherMap.keySet()) {
             if (currentID > max) {
@@ -92,7 +109,7 @@ public class Storage {
         return ++max;
     }
 
-    public static int getNewStudentId() {
+    public  int getNewStudentId() {
         int max = 0;
         for (Integer currentID : studentMap.keySet()) {
             if (currentID > max) {
@@ -102,7 +119,7 @@ public class Storage {
         return ++max;
     }
 
-    public static int getNewPostId() {
+    public  int getNewPostId() {
         int max = 0;
         for (Integer currentID : postMap.keySet()) {
             if (currentID > max) {
@@ -112,7 +129,7 @@ public class Storage {
         return ++max;
     }
 
-    public static int getNewLessonId() {
+    public  int getNewLessonId() {
         int max = 0;
         for (Integer currentID : lessonMap.keySet()) {
             if (currentID > max) {
@@ -122,7 +139,7 @@ public class Storage {
         return ++max;
     }
 
-    public static int getNewFeedId() {
+    public int getNewFeedId() {
         int max = 0;
         for (Integer currentID : feedMap.keySet()) {
             if (currentID > max) {
@@ -132,7 +149,7 @@ public class Storage {
         return ++max;
     }
 
-    public static int getNewHomeTaskId() {
+    public  int getNewHomeTaskId() {
         int max = 0;
         for (Integer currentID : homeTaskMap.keySet()) {
             if (currentID > max) {
@@ -142,7 +159,7 @@ public class Storage {
         return ++max;
     }
 
-    public static int getNewHomeWorkId() {
+    public  int getNewHomeWorkId() {
         int max = 0;
         for (Integer currentID : homeWorkMap.keySet()) {
             if (currentID > max) {

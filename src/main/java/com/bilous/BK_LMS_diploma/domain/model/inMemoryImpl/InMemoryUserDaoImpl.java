@@ -1,13 +1,10 @@
 package com.bilous.BK_LMS_diploma.domain.model.inMemoryImpl;
 
-import com.bilous.BK_LMS_diploma.domain.Group;
-import com.bilous.BK_LMS_diploma.domain.Teacher;
 import com.bilous.BK_LMS_diploma.domain.User;
 import com.bilous.BK_LMS_diploma.domain.model.UserDao;
-import com.bilous.BK_LMS_diploma.persistence.Storage;
+import com.bilous.BK_LMS_diploma.persistence.Persistence;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -15,15 +12,15 @@ public class InMemoryUserDaoImpl  implements UserDao {
 
     @Override
     public List<User> getAll() {
-        return new ArrayList<>(Storage.getUser().values());
+        return new ArrayList<>(Persistence.getInstance().getUser().values());
     }
 
     @Override
     public User saveUser(User user) {
         User savedUser = createUserFromTemplate(user);
-        int newId = Storage.getNewUserId();
+        int newId = Persistence.getInstance().getNewUserId();
         savedUser.setId(newId);
-        Storage.getUser().put(newId, savedUser);
+        Persistence.getInstance().getUser().put(newId, savedUser);
         return savedUser;
     }
 
@@ -37,14 +34,14 @@ public class InMemoryUserDaoImpl  implements UserDao {
 
     @Override
     public User getUserById(int id) {
-        Storage.getUser().get(id);
+        Persistence.getInstance().getUser().get(id);
         return null;
     }
 
     @Override
     public boolean updateUser(User user) {
         int id = user.getId();
-       Map<Integer, User> users =Storage.getUser();
+       Map<Integer, User> users = Persistence.getInstance().getUser();
         if(users.containsKey(id)){
             users.put(id, user);
             return true;
@@ -55,7 +52,7 @@ public class InMemoryUserDaoImpl  implements UserDao {
     @Override
     public boolean updateUserById(User user) {
         int id = user.getId();
-        Map<Integer, User> users = Storage.getUser();
+        Map<Integer, User> users = Persistence.getInstance().getUser();
         if (users.containsKey(id)) {
             users.put(id, user);
             return true;
@@ -67,7 +64,7 @@ public class InMemoryUserDaoImpl  implements UserDao {
 
     @Override
     public boolean deleteUserById(int id) {
-        Map<Integer, User> users = Storage.getUser();
+        Map<Integer, User> users = Persistence.getInstance().getUser();
         if (users.containsKey(id)) {
             users.remove(id);
             return true;
