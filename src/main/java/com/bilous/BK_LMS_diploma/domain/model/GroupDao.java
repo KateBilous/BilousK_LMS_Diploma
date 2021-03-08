@@ -12,9 +12,7 @@ public interface GroupDao {
 
     Group getGroupById(int id);
 
-    boolean updateGroup(Group group);
-
-    boolean updateGroupById(Group group);
+    boolean updateGroupById(Group group, int id);
 
     boolean deleteGroupById(int id);
 

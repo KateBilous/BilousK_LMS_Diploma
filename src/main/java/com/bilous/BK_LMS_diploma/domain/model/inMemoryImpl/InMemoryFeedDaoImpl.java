@@ -13,17 +13,14 @@ public class InMemoryFeedDaoImpl implements FeedDao {
 
     @Override
     public List<Feed> getAll() {
-        return new ArrayList<>(Storage.getInstance().getFeed().values());
+        return new ArrayList<>(Storage.getInstance().getFeeds().values());
     }
 
     @Override
     public Feed saveFeed(Feed feed) {
-        Feed savedFeed = buildFeedFromTemplate(feed);
         int newId = Storage.getInstance().getNewFeedId();
-        savedFeed.setId(newId);
-        Storage.getInstance().getFeed().put(newId, savedFeed);
-        return savedFeed;
-    }
+        feed.setId(newId);
+        return Storage.getInstance().getFeeds().put(feed.getId(), feed);
 
     private Feed buildFeedFromTemplate(Feed feed) {
         Feed newFeed = new Feed(feed.getGroup());
@@ -33,37 +30,35 @@ public class InMemoryFeedDaoImpl implements FeedDao {
 
     @Override
     public Feed getFeedById(int id) {
-        return Storage.getInstance().getFeed().get(id);
+        return Storage.getInstance().getFeeds().get(id);
 
     }
 
     @Override
-    public boolean updateFeed(Feed feed) {
-        int id = feed.getId();
-        Map<Integer, Feed> feeds = Storage.getInstance().getFeed();
-        if (feeds.containsKey(id)) {
-            feeds.put(id, feed);
+    public boolean updateFeedById(Feed feed, int id) {
+        Map<Integer, Feed> feeds = Storage.getInstance().getFeeds();
+        if (feeds.containsKey(feed.getId())) {
+            feeds.put(feed.getId(), feed);
             return true;
         }
         return false;
-    }
 
 
     @Override
     public boolean updateFeedById(Feed feed) {
         int id = feed.getId();
-        Map<Integer, Feed> feeds = Storage.getInstance().getFeed();
+        Map<Integer, Feed> feeds = Storage.getInstance().getFeeds();
         if (feeds.containsKey(id)) {
             feeds.put(id, feed);
             return true;
         }
         return false;
 
-    }
+
 
     @Override
     public boolean deleteFeedById(int id) {
-        Map<Integer, Feed> feeds = Storage.getInstance().getFeed();
+        Map<Integer, Feed> feeds = Storage.getInstance().getFeeds();
         if (feeds.containsKey(id)) {
             feeds.remove(id);
             return true;

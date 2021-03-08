@@ -13,9 +13,8 @@ public interface StudentDao  {
 
     Student getStudentById(int id);
 
-    boolean updateStudent(Student student);
 
-    boolean updateStudentById(Student student);
+    boolean updateStudentById(Student student, int id);
 
     boolean deleteStudentById(int id);
 }

@@ -13,36 +13,27 @@ public class InMemoryLessonDaoImpl implements LessonDao {
 
     @Override
     public List<Lesson> getAll() {
-        return new ArrayList<>(Storage.getInstance().getLesson().values());
+        return new ArrayList<>(Storage.getInstance().getLessons().values());
     }
 
     @Override
     public Lesson saveLesson(Lesson lesson) {
-        Lesson savedLesson = buildLessonFromTemplate(lesson);
         int newId = Storage.getInstance().getNewLessonId();
-        savedLesson.setId(newId);
-        Storage.getInstance().getLesson().put(newId, savedLesson);
-        return savedLesson;
+        lesson.setId(newId);
+        return  Storage.getInstance().getLessons().put(lesson.getId(), lesson);
     }
 
-    private Lesson buildLessonFromTemplate(Lesson lesson) {
-        Lesson newLesson = new Lesson(lesson.getGroup(), lesson.getTopic(), lesson.getMaterials());
-        newLesson.setGroup(lesson.getGroup());
-        newLesson.setTopic(lesson.getTopic());
-        newLesson.setMaterials(lesson.getMaterials());
-        return newLesson;
-    }
 
     @Override
     public Lesson getLessonById(int id) {
-        return Storage.getInstance().getLesson().get(id);
+        return Storage.getInstance().getLessons().get(id);
 
     }
 
     @Override
     public boolean updateLesson(Lesson lesson) {
         int id = lesson.getId();
-        Map<Integer, Lesson> lessons = Storage.getInstance().getLesson();
+        Map<Integer, Lesson> lessons = Storage.getInstance().getLessons();
         if (lessons.containsKey(id)) {
             lessons.put(id, lesson);
             return true;
@@ -54,7 +45,7 @@ public class InMemoryLessonDaoImpl implements LessonDao {
     @Override
     public boolean updateLessonById(Lesson lesson) {
         int id = lesson.getId();
-        Map<Integer, Lesson> lessons = Storage.getInstance().getLesson();
+        Map<Integer, Lesson> lessons = Storage.getInstance().getLessons();
         if (lessons.containsKey(id)) {
             lessons.put(id, lesson);
             return true;

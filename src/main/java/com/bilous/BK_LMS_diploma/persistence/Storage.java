@@ -7,26 +7,26 @@ import java.util.Map;
 
 public class Storage {
 
-    private final Map<Integer, Group> groupMap;
-    private final Map<Integer,User> userMap;
-    private final Map<Integer, Teacher> teacherMap;
-    private final Map<Integer, Student> studentMap;
-    private final Map<Integer, HomeTask> homeTaskMap;
-    private final  Map<Integer, Post> postMap;
-    private final Map<Integer, Lesson> lessonMap;
-    private final Map<Integer, Feed> feedMap;
-    private final Map<Integer, HomeWork> homeWorkMap;
+    private final Map<Integer, Group> groupsMap;
+    private final Map<Integer,User> usersMap;
+    private final Map<Integer, Teacher> teachersMap;
+    private final Map<Integer, Student> studentsMap;
+    private final Map<Integer, HomeTask> homeTasksMap;
+    private final  Map<Integer, Post> postsMap;
+    private final Map<Integer, Lesson> lessonsMap;
+    private final Map<Integer, Feed> feedsMap;
+    private final Map<Integer, HomeWork> homeWorksMap;
 
     private Storage(){
-        this.groupMap = new HashMap<Integer, Group>() {};
-        this.userMap = new HashMap<Integer, User>(){};
-        this.teacherMap = new HashMap<Integer, Teacher>(){};
-        this.studentMap = new HashMap<Integer, Student>(){};
-        this.homeTaskMap = new HashMap<Integer, HomeTask>(){};
-        this.postMap = new HashMap<Integer, Post>(){};
-        this.lessonMap = new HashMap<Integer, Lesson>(){};
-        this.feedMap = new HashMap<Integer, Feed>(){};
-        this.homeWorkMap = new HashMap<Integer, HomeWork>(){};
+        this.groupsMap = new HashMap<Integer, Group>() {};
+        this.usersMap = new HashMap<Integer, User>(){};
+        this.teachersMap = new HashMap<Integer, Teacher>(){};
+        this.studentsMap = new HashMap<Integer, Student>(){};
+        this.homeTasksMap = new HashMap<Integer, HomeTask>(){};
+        this.postsMap = new HashMap<Integer, Post>(){};
+        this.lessonsMap = new HashMap<Integer, Lesson>(){};
+        this.feedsMap = new HashMap<Integer, Feed>(){};
+        this.homeWorksMap = new HashMap<Integer, HomeWork>(){};
 
     }
 
@@ -40,46 +40,46 @@ public class Storage {
     }
 
 
-    public  Map < Integer,Group> getGroup() {
-        return groupMap;
+    public  Map < Integer,Group> getGroups() {
+        return groupsMap;
     }
 
-    public  Map<Integer, User> getUser() {
-        return userMap;
+    public  Map<Integer, User> getUsers() {
+        return usersMap;
     }
 
-    public  Map<Integer, Teacher> getTeacher() {
-        return teacherMap;
+    public  Map<Integer, Teacher> getTeachers() {
+        return teachersMap;
     }
 
-    public  Map<Integer, Student> getStudent() {
-        return studentMap;
+    public  Map<Integer, Student> getStudents() {
+        return studentsMap;
     }
 
-    public  Map<Integer, Post> getPost() {
-        return postMap;
+    public  Map<Integer, Post> getPosts() {
+        return postsMap;
     }
 
-    public  Map<Integer, Lesson> getLesson() {
-        return lessonMap;
+    public  Map<Integer, Lesson> getLessons() {
+        return lessonsMap;
     }
 
-    public  Map<Integer, Feed> getFeed() {
-        return feedMap;
+    public  Map<Integer, Feed> getFeeds() {
+        return feedsMap;
     }
 
-    public  Map<Integer, HomeTask> getHomeTask() {
-        return homeTaskMap;
+    public  Map<Integer, HomeTask> getHomeTasks() {
+        return homeTasksMap;
     }
 
-    public  Map<Integer, HomeWork> getHomeWork() {
-        return homeWorkMap;
+    public  Map<Integer, HomeWork> getHomeWorks() {
+        return homeWorksMap;
     }
 
 
     public int getNewGroupId() {
         int max = 0;
-        for (Integer currentID : groupMap.keySet()) {
+        for (Integer currentID : groupsMap.keySet()) {
             if (currentID > max) {
                 max = currentID;
             }
@@ -89,7 +89,7 @@ public class Storage {
 
     public  int getNewUserId() {
         int max = 0;
-        for (Integer currentID : userMap.keySet()) {
+        for (Integer currentID : usersMap.keySet()) {
             if (currentID > max) {
                 max = currentID;
             }
@@ -99,7 +99,7 @@ public class Storage {
 
     public  int getNewTeacherId() {
         int max = 0;
-        for (Integer currentID : teacherMap.keySet()) {
+        for (Integer currentID : teachersMap.keySet()) {
             if (currentID > max) {
                 max = currentID;
             }
@@ -109,7 +109,7 @@ public class Storage {
 
     public  int getNewStudentId() {
         int max = 0;
-        for (Integer currentID : studentMap.keySet()) {
+        for (Integer currentID : studentsMap.keySet()) {
             if (currentID > max) {
                 max = currentID;
             }
@@ -119,7 +119,7 @@ public class Storage {
 
     public  int getNewPostId() {
         int max = 0;
-        for (Integer currentID : postMap.keySet()) {
+        for (Integer currentID : postsMap.keySet()) {
             if (currentID > max) {
                 max = currentID;
             }
@@ -129,7 +129,7 @@ public class Storage {
 
     public  int getNewLessonId() {
         int max = 0;
-        for (Integer currentID : lessonMap.keySet()) {
+        for (Integer currentID : lessonsMap.keySet()) {
             if (currentID > max) {
                 max = currentID;
             }
@@ -139,7 +139,7 @@ public class Storage {
 
     public int getNewFeedId() {
         int max = 0;
-        for (Integer currentID : feedMap.keySet()) {
+        for (Integer currentID : feedsMap.keySet()) {
             if (currentID > max) {
                 max = currentID;
             }
@@ -149,7 +149,7 @@ public class Storage {
 
     public  int getNewHomeTaskId() {
         int max = 0;
-        for (Integer currentID : homeTaskMap.keySet()) {
+        for (Integer currentID : homeTasksMap.keySet()) {
             if (currentID > max) {
                 max = currentID;
             }
@@ -159,7 +159,7 @@ public class Storage {
 
     public  int getNewHomeWorkId() {
         int max = 0;
-        for (Integer currentID : homeWorkMap.keySet()) {
+        for (Integer currentID : homeWorksMap.keySet()) {
             if (currentID > max) {
                 max = currentID;
             }

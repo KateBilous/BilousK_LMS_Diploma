@@ -10,13 +10,11 @@ public interface FeedDao {
 
     List<Feed> getAll();
 
-    Feed saveFeed(Feed feed);
-
     Feed getFeedById(int id);
 
-    boolean updateFeed(Feed feed);
+    Feed saveFeed(Feed feed);
 
-    boolean updateFeedById(Feed feed);
+    boolean updateFeedById(Feed feed, int id);
 
     boolean deleteFeedById(int id);
 }

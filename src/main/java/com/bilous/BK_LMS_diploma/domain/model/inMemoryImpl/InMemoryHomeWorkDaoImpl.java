@@ -13,38 +13,27 @@ public class InMemoryHomeWorkDaoImpl implements HomeworkDao {
 
     @Override
     public List<HomeWork> getAll() {
-        return new ArrayList<>(Storage.getInstance().getHomeWork().values());
+        return new ArrayList<>(Storage.getInstance().getHomeWorks().values());
     }
 
     @Override
     public HomeWork saveHomeWork(HomeWork homeWork) {
-        HomeWork savedHomeWork = buildHomeWorkFromTemplate(homeWork);
         int newId = Storage.getInstance().getNewHomeWorkId();
-        savedHomeWork.setId(newId);
-        Storage.getInstance().getHomeWork().put(newId, savedHomeWork);
-        return savedHomeWork;
+        homeWork.setId(newId);
+        return Storage.getInstance().getHomeWorks().put(homeWork.getId(), homeWork);
     }
 
-    private HomeWork buildHomeWorkFromTemplate(HomeWork homeWork) {
-        HomeWork newHomeWork = new HomeWork(homeWork.getHomeTasks(), homeWork.getScore(), homeWork.getResolution(),
-                homeWork.getAuthor());
-        newHomeWork.setHomeTasks(homeWork.getHomeTasks());
-        newHomeWork.setScore(homeWork.getScore());
-        newHomeWork.setResolution(homeWork.getResolution());
-        newHomeWork.setAuthor(homeWork.getAuthor());
-        return newHomeWork;
-    }
 
     @Override
     public HomeWork getHomeWorkById(int id) {
-        return Storage.getInstance().getHomeWork().get(id);
+        return Storage.getInstance().getHomeWorks().get(id);
 
     }
 
     @Override
     public boolean updateHomeWork(HomeWork homeWork) {
         int id = homeWork.getId();
-        Map<Integer, HomeWork> homeworks = Storage.getInstance().getHomeWork();
+        Map<Integer, HomeWork> homeworks = Storage.getInstance().getHomeWorks();
         if (homeworks.containsKey(id)) {
             homeworks.put(id, homeWork);
             return true;
@@ -56,7 +45,7 @@ public class InMemoryHomeWorkDaoImpl implements HomeworkDao {
     @Override
     public boolean updateHomeWorkById(HomeWork homeWork) {
         int id = homeWork.getId();
-        Map<Integer, HomeWork> homeworks = Storage.getInstance().getHomeWork();
+        Map<Integer, HomeWork> homeworks = Storage.getInstance().getHomeWorks();
         if (homeworks.containsKey(id)) {
             homeworks.put(id, homeWork);
             return true;
@@ -67,7 +56,7 @@ public class InMemoryHomeWorkDaoImpl implements HomeworkDao {
 
     @Override
     public boolean deleteHomeWorkById(int id) {
-        Map<Integer, HomeWork> homeworks = Storage.getInstance().getHomeWork();
+        Map<Integer, HomeWork> homeworks = Storage.getInstance().getHomeWorks();
         if (homeworks.containsKey(id)) {
             homeworks.remove(id);
             return true;

@@ -12,61 +12,39 @@ public  class InMemoryTeacherDaoImpl implements TeacherDao  {
 
     @Override
     public List<Teacher> getAll() {
-        return new ArrayList<>(Storage.getInstance().getTeacher().values());
+        return new ArrayList<>(Storage.getInstance().getTeachers().values());
     }
 
     @Override
     public Teacher saveTeacher(Teacher teacher) {
-        Teacher savedTeacher = buildTeacherFromTemplate(teacher);
         int newId = Storage.getInstance().getNewTeacherId();
-        savedTeacher.setId(newId);
-        Storage.getInstance().getTeacher().put(newId, savedTeacher);
-        return savedTeacher;
+        teacher.setId(newId);
+        return Storage.getInstance().getTeachers().put(teacher.getId(), teacher);
     }
 
-    private Teacher buildTeacherFromTemplate(Teacher teacher) {
-        Teacher newTeacher = new Teacher(teacher.getFirstName(), teacher.getLastName(), teacher.getDateOfBirth(),
-                teacher.getRole());
-        newTeacher.setFirstName(teacher.getFirstName());
-        newTeacher.setLastName(teacher.getLastName());
-        newTeacher.setDateOfBirth(teacher.getDateOfBirth());
-        newTeacher.setRole(teacher.getRole());
-        return newTeacher;
-    }
 
     @Override
     public Teacher getTeacherById(int id) {
-        return Storage.getInstance().getTeacher().get(id);
+        return Storage.getInstance().getTeachers().get(id);
 
     }
 
     @Override
-    public boolean updateTeacher(Teacher teacher) {
-        int id = teacher.getId();
-        Map<Integer, Teacher> teachers = Storage.getInstance().getTeacher();
-        if (teachers.containsKey(id)) {
-            teachers.put(id, teacher);
+    public boolean updateTeacherById(Teacher teacher, int id) {
+        Map<Integer, Teacher> teachers = Storage.getInstance().getTeachers();
+        if (teachers.containsKey(teacher.getId())) {
+            teachers.put(teacher.getId(), teacher);
             return true;
         }
         return false;
     }
 
 
-    @Override
-    public boolean updateTeacherById(Teacher teacher) {
-        int id = teacher.getId();
-        Map<Integer, Teacher> teachers = Storage.getInstance().getTeacher();
-        if (teachers.containsKey(id)) {
-            teachers.put(id, teacher);
-            return true;
-        }
-        return false;
 
-    }
 
     @Override
     public boolean deleteTeacherById(int id) {
-        Map<Integer, Teacher> teachers = Storage.getInstance().getTeacher();
+        Map<Integer, Teacher> teachers = Storage.getInstance().getTeachers();
         if (teachers.containsKey(id)) {
             teachers.remove(id);
             return true;

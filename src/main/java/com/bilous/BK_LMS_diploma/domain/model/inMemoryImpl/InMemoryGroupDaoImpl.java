@@ -12,51 +12,29 @@ public class InMemoryGroupDaoImpl implements GroupDao {
 
     @Override
     public List<Group> getAll() {
-        return new ArrayList<>(Storage.getInstance().getGroup().values());
+        return new ArrayList<>(Storage.getInstance().getGroups().values());
     }
 
     @Override
-    public Integer saveGroup(Group group) {
-        Group savedGroup = buildGroupFromTemplate(group);
+    public Group saveGroup(Group group) {
         int newId = Storage.getInstance().getNewGroupId();
-        savedGroup.setId(newId);
-        Storage.getInstance().getGroup().put(newId, savedGroup);
-        return savedGroup;
-    }
-
-    private Group buildGroupFromTemplate(Group group) {
-        Group newGroup = new Group(group.getName(), group.getDirection(), group.getStartDate());
-        newGroup.setStudents(group.getStudents());
-        newGroup.setTeachers(group.getTeachers());
-        newGroup.getFeed().getPosts().addAll(group.getFeed().getPosts());
-        newGroup.getLessons().addAll(group.getLessons());
-        return newGroup;
+        group.setId(newId);
+        return Storage.getInstance().getGroups().put(group.getId(), group);
     }
 
     @Override
     public Group getGroupById(int id) {
-        return Storage.getInstance().getGroup().get(id);
+        return Storage.getInstance().getGroups().get(id);
 
     }
 
-    @Override
-    public boolean updateGroup(Group group) {
-        int id = group.getId();
-        Map<Integer, Group> groups = Storage.getInstance().getGroup();
-        if (groups.containsKey(id)) {
-            groups.put(id, group);
-            return true;
-        }
-        return false;
-    }
 
 
     @Override
-    public boolean updateGroupById(Group group) {
-        int id = group.getId();
-        Map<Integer, Group> groups = Storage.getInstance().getGroup();
-        if (groups.containsKey(id)) {
-            groups.put(id, group);
+    public boolean updateGroupById(Group group, int id) {
+        Map<Integer, Group> groups = Storage.getInstance().getGroups();
+        if (groups.containsKey(group.getId())) {
+            groups.put(group.getId(), group);
             return true;
         }
         return false;

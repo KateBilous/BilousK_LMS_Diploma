@@ -1,10 +1,13 @@
 package com.bilous.BK_LMS_diploma.domain.model.inMemoryImpl;
 
+import com.bilous.BK_LMS_diploma.domain.Group;
+import com.bilous.BK_LMS_diploma.domain.Teacher;
 import com.bilous.BK_LMS_diploma.domain.User;
 import com.bilous.BK_LMS_diploma.domain.model.UserDao;
 import com.bilous.BK_LMS_diploma.persistence.Storage;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -12,54 +15,35 @@ public class InMemoryUserDaoImpl  implements UserDao {
 
     @Override
     public List<User> getAll() {
-        return new ArrayList<>(Storage.getInstance().getUser().values());
+        return new ArrayList<>(Storage.getInstance().getUsers().values());
     }
 
     @Override
     public User saveUser(User user) {
-        User savedUser = createUserFromTemplate(user);
         int newId = Storage.getInstance().getNewUserId();
-        savedUser.setId(newId);
-        Storage.getInstance().getUser().put(newId, savedUser);
-        return savedUser;
+        user.setId(newId);
+        return Storage.getInstance().getUsers().put(user.getId(), user);
     }
 
-    private User createUserFromTemplate(User user) {
-        User newUser = new User(user.getFirstName(), user.getLastName(),user.getDateOfBirth());
-        newUser.setFirstName(user.getFirstName());
-        newUser.setLastName(user.getLastName());
-        newUser.setDateOfBirth(user.getDateOfBirth());
-        return newUser;
-    }
 
     @Override
     public User getUserById(int id) {
-        Storage.getInstance().getUser().get(id);
+        Storage.getInstance().getUsers().get(id);
         return null;
     }
 
     @Override
-    public boolean updateUser(User user) {
-        int id = user.getId();
-       Map<Integer, User> users = Storage.getInstance().getUser();
-        if(users.containsKey(id)){
-            users.put(id, user);
-            return true;
-        }
-        return false;
-    }
-
-    @Override
-    public boolean updateUserById(User user) {
-        int id = user.getId();
-        Map<Integer, User> users = Storage.getInstance().getUser();
-        if (users.containsKey(id)) {
-            users.put(id, user);
+    public boolean updateUserById(User user, int id) {
+        Map<Integer, User> users = Storage.getInstance().getUsers();
+        if (users.containsKey(user.getId())) {
+            users.put(user.getId(), user);
             return true;
         }
         return false;
 
     }
+
+
 
 
     @Override
