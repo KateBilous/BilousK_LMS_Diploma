@@ -1,9 +1,8 @@
 package com.bilous.BK_LMS_diploma.domain.model.inMemoryImpl;
 
 import com.bilous.BK_LMS_diploma.domain.HomeTask;
-import com.bilous.BK_LMS_diploma.domain.Student;
 import com.bilous.BK_LMS_diploma.domain.model.HomeTaskDao;
-import com.bilous.BK_LMS_diploma.persistence.Storage;
+import com.bilous.BK_LMS_diploma.persistence.Persistence;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,42 +13,30 @@ public class InMemoryHomeTask  implements HomeTaskDao {
 
     @Override
     public List<HomeTask> getAll() {
-        return new ArrayList<>(Storage.getInstance().getHomeTasks().values());
+        return new ArrayList<>(Persistence.getInstance().getHomeTasks().values());
     }
 
     @Override
     public HomeTask saveHomeTask(HomeTask homeTask) {
-        int newId = Storage.getInstance().getNewHomeTaskId();
+        int newId = Persistence.getInstance().getNewHomeTaskId();
         homeTask.setId(newId);
-        return Storage.getInstance().getHomeTasks().put(homeTask.getId(), homeTask);
+        return Persistence.getInstance().getHomeTasks().put(homeTask.getId(), homeTask);
     }
 
 
 
     @Override
     public HomeTask getHomeTaskById(int id) {
-        return Storage.getInstance().getHomeTasks().get(id);
+        return Persistence.getInstance().getHomeTasks().get(id);
 
-    }
-
-    @Override
-    public boolean updateHomeTask(HomeTask homeTask) {
-        int id = homeTask.getId();
-        Map<Integer, HomeTask> homeTasks = Storage.getInstance().getHomeTasks();
-        if (homeTasks.containsKey(id)) {
-            homeTasks.put(id, homeTask);
-            return true;
-        }
-        return false;
     }
 
 
     @Override
-    public boolean updateHomeTaskById(HomeTask homeTask) {
-        int id = homeTask.getId();
-        Map<Integer, HomeTask> homeTasks = Storage.getInstance().getHomeTasks();
-        if (homeTasks.containsKey(id)) {
-            homeTasks.put(id, homeTask);
+    public boolean updateHomeTaskById(HomeTask homeTask, int id) {
+        Map<Integer, HomeTask> homeTasks = Persistence.getInstance().getHomeTasks();
+        if (homeTasks.containsKey( homeTask.getId())) {
+            homeTasks.put( homeTask.getId(), homeTask);
             return true;
         }
         return false;
@@ -58,7 +45,7 @@ public class InMemoryHomeTask  implements HomeTaskDao {
 
     @Override
     public boolean deleteHomeTaskById(int id) {
-        Map<Integer, HomeTask> homeTasks = Storage.getInstance().getHomeTasks();
+        Map<Integer, HomeTask> homeTasks = Persistence.getInstance().getHomeTasks();
         if (homeTasks.containsKey(id)) {
             homeTasks.remove(id);
             return true;

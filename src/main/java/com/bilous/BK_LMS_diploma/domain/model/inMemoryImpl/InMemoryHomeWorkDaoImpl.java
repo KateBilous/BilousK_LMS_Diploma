@@ -2,7 +2,7 @@ package com.bilous.BK_LMS_diploma.domain.model.inMemoryImpl;
 
 import com.bilous.BK_LMS_diploma.domain.HomeWork;
 import com.bilous.BK_LMS_diploma.domain.model.HomeworkDao;
-import com.bilous.BK_LMS_diploma.persistence.Storage;
+import com.bilous.BK_LMS_diploma.persistence.Persistence;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,50 +13,37 @@ public class InMemoryHomeWorkDaoImpl implements HomeworkDao {
 
     @Override
     public List<HomeWork> getAll() {
-        return new ArrayList<>(Storage.getInstance().getHomeWorks().values());
+        return new ArrayList<>(Persistence.getInstance().getHomeWorks().values());
     }
 
     @Override
     public HomeWork saveHomeWork(HomeWork homeWork) {
-        int newId = Storage.getInstance().getNewHomeWorkId();
+        int newId = Persistence.getInstance().getNewHomeWorkId();
         homeWork.setId(newId);
-        return Storage.getInstance().getHomeWorks().put(homeWork.getId(), homeWork);
+        return Persistence.getInstance().getHomeWorks().put(homeWork.getId(), homeWork);
     }
 
 
     @Override
     public HomeWork getHomeWorkById(int id) {
-        return Storage.getInstance().getHomeWorks().get(id);
+        return Persistence.getInstance().getHomeWorks().get(id);
 
     }
 
     @Override
-    public boolean updateHomeWork(HomeWork homeWork) {
-        int id = homeWork.getId();
-        Map<Integer, HomeWork> homeworks = Storage.getInstance().getHomeWorks();
-        if (homeworks.containsKey(id)) {
-            homeworks.put(id, homeWork);
+    public boolean updateHomeWorkById(HomeWork homeWork, int id) {
+        Map<Integer, HomeWork> homeWorks = Persistence.getInstance().getHomeWorks();
+        if (homeWorks.containsKey(homeWork.getId())) {
+            homeWorks.put(homeWork.getId(), homeWork);
             return true;
         }
         return false;
     }
 
-
-    @Override
-    public boolean updateHomeWorkById(HomeWork homeWork) {
-        int id = homeWork.getId();
-        Map<Integer, HomeWork> homeworks = Storage.getInstance().getHomeWorks();
-        if (homeworks.containsKey(id)) {
-            homeworks.put(id, homeWork);
-            return true;
-        }
-        return false;
-
-    }
 
     @Override
     public boolean deleteHomeWorkById(int id) {
-        Map<Integer, HomeWork> homeworks = Storage.getInstance().getHomeWorks();
+        Map<Integer, HomeWork> homeworks = Persistence.getInstance().getHomeWorks();
         if (homeworks.containsKey(id)) {
             homeworks.remove(id);
             return true;

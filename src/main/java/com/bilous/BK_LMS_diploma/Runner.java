@@ -1,17 +1,10 @@
 package com.bilous.BK_LMS_diploma;
 
 import com.bilous.BK_LMS_diploma.domain.*;
-import com.bilous.BK_LMS_diploma.domain.model.FeedDao;
-import com.bilous.BK_LMS_diploma.domain.model.GroupDao;
-import com.bilous.BK_LMS_diploma.domain.model.TeacherDao;
-import com.bilous.BK_LMS_diploma.domain.model.UserDao;
-import com.bilous.BK_LMS_diploma.domain.model.inMemoryImpl.InMemoryFeedDaoImpl;
-import com.bilous.BK_LMS_diploma.domain.model.inMemoryImpl.InMemoryGroupDaoImpl;
-import com.bilous.BK_LMS_diploma.domain.model.inMemoryImpl.InMemoryTeacherDaoImpl;
-import com.bilous.BK_LMS_diploma.domain.model.inMemoryImpl.InMemoryUserDaoImpl;
-import com.bilous.BK_LMS_diploma.persistence.Storage;
-import com.bilous.BK_LMS_diploma.service.GroupService;
-import com.bilous.BK_LMS_diploma.service.GroupServiceImpl;
+import com.bilous.BK_LMS_diploma.domain.model.*;
+import com.bilous.BK_LMS_diploma.domain.model.inMemoryImpl.*;
+import com.bilous.BK_LMS_diploma.persistence.Persistence;
+import com.bilous.BK_LMS_diploma.service.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -19,19 +12,36 @@ import java.util.List;
 public class Runner {
     public static void main(String[] args) {
 
-        Storage persistence = Storage.getInstance();
+        Persistence persistence = Persistence.getInstance();
 
         GroupDao groupDao = new InMemoryGroupDaoImpl();
         UserDao userDao = new InMemoryUserDaoImpl();
         TeacherDao teacherDao = new InMemoryTeacherDaoImpl();
         FeedDao feedDao = new InMemoryFeedDaoImpl();
+        HomeTaskDao homeTaskDao = new InMemoryHomeTask();
+        LessonDao lessonDao = new InMemoryLessonDaoImpl();
+        PostDao postDao= new InMemoryPostDaoImpl();
+
+
 
         GroupService groupService = new GroupServiceImpl(groupDao);
-        groupService.createGroup("Java Enterprise", "Back-end", LocalDate.of(2021, 3, 7));
-        groupService.createGroup("Java Basic", "Back-end", LocalDate.of(2021, 3, 7));
-
-
+        UserService userService = new UserServiceImpl(userDao);
+        HomeTaskService homeTaskService= new HomeTaskServiceImpl(homeTaskDao);
+        LessonService lessonService = new LessonServiceImpl(lessonDao);
+        PostService postService = new PostServiceImpl(postDao);
+        FeedService feedService = new FeedServiceImpl(feedDao);
         Group group = new Group("Java", "Back-end", LocalDate.now());
+        groupService.createGroup("Java Enterprise", "Back-end", LocalDate.of(2021, 3, 7));
+        Post post = new Post(feedDao.getFeedById(1),"Ola la", LocalDate.now(), "Blink");
+        groupService.createGroup("Java Basic", "Back-end", LocalDate.of(2021, 3, 7));
+        userService.createUser("Olha","Klimko", LocalDate.of(1992, 2,2));
+        lessonService.createLesson(group, "smth","smth");
+        postService.createPost(feedService.creteFeed(group), "smth", LocalDate.now(), "Arthur");
+        postService.savePost(post);
+
+
+
+
         Group group1 = new Group("Java", "Back-end", LocalDate.now());
         Group group2 = new Group("JavaBasic", "Back-end", LocalDate.now());
         Group group3 = new Group("JavaEnterprise", "Back-end", LocalDate.now());
@@ -70,7 +80,6 @@ public class Runner {
         Student student = new Student("Kate", "Bilous", LocalDate.ofYearDay(1991, 5),
                 group1);
         Feed feed = new Feed(group1);
-        Post post = new Post(feed, "Sone text", LocalDate.now(), "Olha");
         Lesson lesson = new Lesson(group1, "smth", "kdkdkd");
         HomeTask homeTask = new HomeTask(lesson, 87, LocalDate.now(), "jsjsjsj", LocalDate.of(2021,
                 9, 8));

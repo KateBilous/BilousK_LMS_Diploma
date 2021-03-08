@@ -45,9 +45,13 @@ public class GroupServiceImpl implements GroupService{
     }
 
     @Override
-    public Integer saveGroup(Group group) {
+    public Group saveGroup(Group group) {
         if(!validateGroup(group)){
-            return -1;
+             try {
+                throw new Exception("Exception message");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             //TODO write log
         }
        return  groupDao.saveGroup(group);

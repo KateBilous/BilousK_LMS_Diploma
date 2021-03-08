@@ -5,7 +5,7 @@ import com.bilous.BK_LMS_diploma.domain.*;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Storage {
+public class Persistence {
 
     private final Map<Integer, Group> groupsMap;
     private final Map<Integer,User> usersMap;
@@ -17,7 +17,7 @@ public class Storage {
     private final Map<Integer, Feed> feedsMap;
     private final Map<Integer, HomeWork> homeWorksMap;
 
-    private Storage(){
+    private Persistence(){
         this.groupsMap = new HashMap<Integer, Group>() {};
         this.usersMap = new HashMap<Integer, User>(){};
         this.teachersMap = new HashMap<Integer, Teacher>(){};
@@ -30,12 +30,12 @@ public class Storage {
 
     }
 
-    public static Storage getInstance(){
+    public static Persistence getInstance(){
         return PersistenceHolder.instance;
     }
 
     public static class PersistenceHolder{
-        private static final Storage instance = new Storage();
+        private static final Persistence instance = new Persistence();
 
     }
 

@@ -8,6 +8,8 @@ public interface UserService {
 
     User createUser(String firstName, String lastName, LocalDate dateOfBirth);
 
+    User saveUser(User user);
+
 
     
 }

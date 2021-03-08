@@ -16,8 +16,7 @@ public interface GroupService {
 
     boolean addTeacher(Group group, Teacher teacher);
 
-    Integer saveGroup(Group group);
-
+    Group saveGroup(Group group);
 
 
 }

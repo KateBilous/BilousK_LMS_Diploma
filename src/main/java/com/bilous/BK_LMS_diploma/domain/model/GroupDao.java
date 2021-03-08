@@ -8,7 +8,7 @@ public interface GroupDao {
 
     List<Group> getAll();
 
-    Integer saveGroup(Group group);
+    Group saveGroup(Group group);
 
     Group getGroupById(int id);
 

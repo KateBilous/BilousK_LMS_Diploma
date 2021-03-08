@@ -11,15 +11,15 @@ public class HomeTask {
     private int retake;
     private LocalDate date;
     private String materials;
-    private LocalDate dedLine;
+    private LocalDate deadline;
 
 
-    public HomeTask(Lesson lesson, int task, LocalDate date, String materials, LocalDate dedLine) {
+    public HomeTask(Lesson lesson, int task, LocalDate date, String materials, LocalDate deadline) {
         this.lesson = lesson;
         this.retake = task;
         this.date = date;
         this.materials = materials;
-        this.dedLine = dedLine;
+        this.deadline = deadline;
     }
 
     public Integer getId() {
@@ -64,12 +64,12 @@ public class HomeTask {
         this.materials = materials;
     }
 
-    public LocalDate getDedLine() {
-        return dedLine;
+    public LocalDate getDeadline() {
+        return deadline;
     }
 
-    public void setDedLine(LocalDate dedLine) {
-        this.dedLine = dedLine;
+    public void setDeadline(LocalDate deadline) {
+        this.deadline = deadline;
     }
 
     @Override
@@ -79,7 +79,7 @@ public class HomeTask {
                 ", task=" + retake +
                 ", date=" + date +
                 ", materials='" + materials + '\'' +
-                ", dedLine=" + dedLine +
+                ", dedLine=" + deadline +
                 '}';
     }
 
@@ -92,11 +92,11 @@ public class HomeTask {
                 lesson.equals(homeTask.lesson) &&
                 date.equals(homeTask.date) &&
                 materials.equals(homeTask.materials) &&
-                dedLine.equals(homeTask.dedLine);
+                deadline.equals(homeTask.deadline);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(lesson, retake, date, materials, dedLine);
+        return Objects.hash(lesson, retake, date, materials, deadline);
     }
 }
