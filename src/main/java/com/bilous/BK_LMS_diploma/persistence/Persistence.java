@@ -87,7 +87,7 @@ public class Persistence {
         return ++max;
     }
 
-    public  int getNewUserId() {
+    public int getNewUserId() {
         int max = 0;
         for (Integer currentID : usersMap.keySet()) {
             if (currentID > max) {

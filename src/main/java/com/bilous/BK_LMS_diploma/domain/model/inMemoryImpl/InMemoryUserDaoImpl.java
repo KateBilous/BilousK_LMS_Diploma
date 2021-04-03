@@ -1,6 +1,7 @@
 package com.bilous.BK_LMS_diploma.domain.model.inMemoryImpl;
 
 import com.bilous.BK_LMS_diploma.domain.User;
+import com.bilous.BK_LMS_diploma.domain.model.GroupDao;
 import com.bilous.BK_LMS_diploma.domain.model.UserDao;
 import com.bilous.BK_LMS_diploma.persistence.Persistence;
 
@@ -9,6 +10,16 @@ import java.util.List;
 import java.util.Map;
 
 public class InMemoryUserDaoImpl  implements UserDao {
+
+    GroupDao groupDao;
+
+    public InMemoryUserDaoImpl(GroupDao groupDao) {
+
+    }
+
+    public InMemoryUserDaoImpl() {
+
+    }
 
     @Override
     public List<User> getAll() {
@@ -23,11 +34,14 @@ public class InMemoryUserDaoImpl  implements UserDao {
     }
 
 
+
+
     @Override
     public User getUserById(int id) {
         Persistence.getInstance().getUsers().get(id);
         return null;
     }
+
 
     @Override
     public boolean updateUserById(User user, int id) {

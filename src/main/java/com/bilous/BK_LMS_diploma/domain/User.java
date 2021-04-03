@@ -9,6 +9,10 @@ public  class User {
     protected String firstName;
     protected String lastName;
     protected LocalDate dateOfBirth;
+    protected  String login;
+    protected String password;
+
+
 
     //private int id;
 
@@ -18,6 +22,22 @@ public  class User {
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
 
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Integer getId() {

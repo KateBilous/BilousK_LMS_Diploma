@@ -18,6 +18,15 @@ public class Teacher extends User {
         this.groups = new LinkedList<Group>();
     }
 
+    public Teacher(String firstName, String lastName, LocalDate dateOfBirth) {
+        super(firstName, lastName, dateOfBirth);
+        this.groups = new LinkedList<Group>();
+    }
+
+
+
+
+
     public String getRole() {
         return role;
     }

@@ -7,12 +7,19 @@ public class Student extends User {
 
     private Group group;
 
+    public Student(String firstName, String lastName, LocalDate dateOfBirth){
+        super(firstName, lastName, dateOfBirth);
+    }
+
 
     public Student(String firstName, String lastName, LocalDate dateOfBirth, Group group) {
         super(firstName, lastName, dateOfBirth);
         this.group = group;
 
     }
+
+
+
 
 
     public Group getGroup() {

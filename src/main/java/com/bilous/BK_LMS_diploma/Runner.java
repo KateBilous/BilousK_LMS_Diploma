@@ -34,7 +34,7 @@ public class Runner {
         groupService.createGroup("Java Enterprise", "Back-end", LocalDate.of(2021, 3, 7));
         Post post = new Post(feedDao.getFeedById(1),"Ola la", LocalDate.now(), "Blink");
         groupService.createGroup("Java Basic", "Back-end", LocalDate.of(2021, 3, 7));
-        userService.createUser("Olha","Klimko", LocalDate.of(1992, 2,2));
+       // userService.createUser("Olha","Klimko", LocalDate.of(1992, 2,2));
         lessonService.createLesson(group, "smth","smth");
         postService.createPost(feedService.creteFeed(group), "smth", LocalDate.now(), "Arthur");
         postService.savePost(post);
