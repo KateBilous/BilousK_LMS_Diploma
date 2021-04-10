@@ -1,7 +1,7 @@
 package com.bilous.BK_LMS_diploma.service;
 
-import com.bilous.BK_LMS_diploma.domain.Feed;
-import com.bilous.BK_LMS_diploma.domain.Post;
+import com.bilous.BK_LMS_diploma.dao.Feed;
+import com.bilous.BK_LMS_diploma.dao.Post;
 
 import java.time.LocalDate;
 

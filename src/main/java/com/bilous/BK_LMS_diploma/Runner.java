@@ -1,8 +1,8 @@
 package com.bilous.BK_LMS_diploma;
 
-import com.bilous.BK_LMS_diploma.domain.*;
-import com.bilous.BK_LMS_diploma.domain.model.*;
-import com.bilous.BK_LMS_diploma.domain.model.inMemoryImpl.*;
+import com.bilous.BK_LMS_diploma.dao.*;
+import com.bilous.BK_LMS_diploma.dao.model.*;
+import com.bilous.BK_LMS_diploma.dao.model.inMemoryImpl.*;
 import com.bilous.BK_LMS_diploma.persistence.Persistence;
 import com.bilous.BK_LMS_diploma.service.*;
 

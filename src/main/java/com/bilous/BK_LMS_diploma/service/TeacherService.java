@@ -1,6 +1,6 @@
 package com.bilous.BK_LMS_diploma.service;
 
-import com.bilous.BK_LMS_diploma.domain.Teacher;
+import com.bilous.BK_LMS_diploma.dao.Teacher;
 
 import java.time.LocalDate;
 

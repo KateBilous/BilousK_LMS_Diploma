@@ -1,14 +1,10 @@
 package com.bilous.BK_LMS_diploma.service;
 
-import com.bilous.BK_LMS_diploma.domain.Group;
-import com.bilous.BK_LMS_diploma.domain.HomeTask;
-import com.bilous.BK_LMS_diploma.domain.Lesson;
-import com.bilous.BK_LMS_diploma.domain.model.HomeTaskDao;
-import com.bilous.BK_LMS_diploma.domain.model.LessonDao;
+import com.bilous.BK_LMS_diploma.dao.HomeTask;
+import com.bilous.BK_LMS_diploma.dao.Lesson;
+import com.bilous.BK_LMS_diploma.dao.model.HomeTaskDao;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 public class HomeTaskServiceImpl implements HomeTaskService{
 

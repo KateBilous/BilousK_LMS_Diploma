@@ -1,8 +1,8 @@
 package com.bilous.BK_LMS_diploma.service;
 
-import com.bilous.BK_LMS_diploma.domain.HomeTask;
-import com.bilous.BK_LMS_diploma.domain.HomeWork;
-import com.bilous.BK_LMS_diploma.domain.model.HomeworkDao;
+import com.bilous.BK_LMS_diploma.dao.HomeTask;
+import com.bilous.BK_LMS_diploma.dao.HomeWork;
+import com.bilous.BK_LMS_diploma.dao.model.HomeworkDao;
 
 public class HomeWorkServiceImpl implements HomeWorkService {
 

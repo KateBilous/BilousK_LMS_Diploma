@@ -1,8 +1,8 @@
 package com.bilous.BK_LMS_diploma.service;
 
-import com.bilous.BK_LMS_diploma.domain.Feed;
-import com.bilous.BK_LMS_diploma.domain.Group;
-import com.bilous.BK_LMS_diploma.domain.model.FeedDao;
+import com.bilous.BK_LMS_diploma.dao.Feed;
+import com.bilous.BK_LMS_diploma.dao.Group;
+import com.bilous.BK_LMS_diploma.dao.model.FeedDao;
 
 public class FeedServiceImpl implements FeedService {
 

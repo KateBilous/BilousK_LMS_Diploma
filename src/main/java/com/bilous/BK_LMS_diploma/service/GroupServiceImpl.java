@@ -1,10 +1,10 @@
 package com.bilous.BK_LMS_diploma.service;
 
-import com.bilous.BK_LMS_diploma.domain.Group;
-import com.bilous.BK_LMS_diploma.domain.Lesson;
-import com.bilous.BK_LMS_diploma.domain.Student;
-import com.bilous.BK_LMS_diploma.domain.Teacher;
-import com.bilous.BK_LMS_diploma.domain.model.GroupDao;
+import com.bilous.BK_LMS_diploma.dao.Group;
+import com.bilous.BK_LMS_diploma.dao.Lesson;
+import com.bilous.BK_LMS_diploma.dao.Student;
+import com.bilous.BK_LMS_diploma.dao.Teacher;
+import com.bilous.BK_LMS_diploma.dao.model.GroupDao;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

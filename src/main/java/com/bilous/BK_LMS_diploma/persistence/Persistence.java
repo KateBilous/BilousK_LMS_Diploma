@@ -1,6 +1,6 @@
 package com.bilous.BK_LMS_diploma.persistence;
 
-import com.bilous.BK_LMS_diploma.domain.*;
+import com.bilous.BK_LMS_diploma.dao.*;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,7 +1,7 @@
 package com.bilous.BK_LMS_diploma.service;
 
-import com.bilous.BK_LMS_diploma.domain.User;
-import com.bilous.BK_LMS_diploma.domain.model.UserDao;
+import com.bilous.BK_LMS_diploma.dao.User;
+import com.bilous.BK_LMS_diploma.dao.model.UserDao;
 
 import java.time.LocalDate;
 

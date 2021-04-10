@@ -1,7 +1,7 @@
 package com.bilous.BK_LMS_diploma.service;
 
-import com.bilous.BK_LMS_diploma.domain.Feed;
-import com.bilous.BK_LMS_diploma.domain.Group;
+import com.bilous.BK_LMS_diploma.dao.Feed;
+import com.bilous.BK_LMS_diploma.dao.Group;
 
 public interface FeedService {
 
