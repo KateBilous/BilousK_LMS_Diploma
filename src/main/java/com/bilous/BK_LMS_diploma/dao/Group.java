@@ -1,6 +1,6 @@
 package com.bilous.BK_LMS_diploma.dao;
 
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
@@ -11,7 +11,7 @@ public class Group {
     private Integer id;
     private String name;
     private String direction;
-    private LocalDate startDate;
+    private Date startDate;
 
     private List<Student> students;
     private List<Teacher> teachers;
@@ -20,7 +20,7 @@ public class Group {
 
 
 
-    public Group(String name, String direction, LocalDate startDate) {
+    public Group(String name, String direction, Date startDate) {
         this.name = name;
         this.direction = direction;
         this.startDate = startDate;
@@ -53,11 +53,11 @@ public class Group {
         this.direction = direction;
     }
 
-    public LocalDate getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(LocalDate startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 

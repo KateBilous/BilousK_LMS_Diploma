@@ -32,7 +32,7 @@ public class DaoAbstractFactory {
             return groupDaoFactory.getImMemoryGroupDao();
         }
         if (JDBC.equals(daoType)) {
-            return groupDaoFactory.getJdbcGroupDao();
+            return  groupDaoFactory.getJdbcGroupDao();
         }
         return null;
 

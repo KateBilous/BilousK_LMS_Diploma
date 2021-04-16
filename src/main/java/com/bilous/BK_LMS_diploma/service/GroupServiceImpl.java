@@ -8,6 +8,7 @@ import com.bilous.BK_LMS_diploma.dao.model.GroupDao;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class GroupServiceImpl implements GroupService{
@@ -19,7 +20,7 @@ public class GroupServiceImpl implements GroupService{
     }
 
     @Override
-    public Group createGroup(String name, String direction, LocalDate startDate) {
+    public Group createGroup(String name, String direction, Date startDate) {
         return new Group(name, direction, startDate);
     }
 

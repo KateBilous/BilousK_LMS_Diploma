@@ -1,18 +1,20 @@
 package com.bilous.BK_LMS_diploma;
 
 import com.bilous.BK_LMS_diploma.dao.*;
+import com.bilous.BK_LMS_diploma.dao.jdbc.Jdbcimpl.JdbcGroupDaoImpl;
 import com.bilous.BK_LMS_diploma.dao.model.*;
 import com.bilous.BK_LMS_diploma.dao.model.inMemoryImpl.*;
 import com.bilous.BK_LMS_diploma.persistence.Persistence;
 import com.bilous.BK_LMS_diploma.service.*;
 
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 
 public class Runner {
     public static void main(String[] args) {
 
-        Persistence persistence = Persistence.getInstance();
+       /* Persistence persistence = Persistence.getInstance();
 
         GroupDao groupDao = new InMemoryGroupDaoImpl();
         UserDao userDao = new InMemoryUserDaoImpl();
@@ -100,5 +102,13 @@ public class Runner {
         groupService.addTeacher(group, teacher);
         groupService.addTeacher(group, mentor);
 
-    }
-}
+    }*/
+        GroupDao groupDao = new JdbcGroupDaoImpl();
+        groupDao.getAll();
+        Group group = new Group("kek", "Java-kek", Date.valueOf(LocalDate.of(1991,4,5)));
+        groupDao.saveGroup(group);
+        groupDao.getGroupById(9);
+        groupDao.updateGroupById(group, 10);
+        groupDao.deleteGroupById(12);
+
+    }}
